@@ -2,7 +2,7 @@ import os
 
 class Config(object):
 
-    POSTS_PER_PAGE = 4
+    API_URL  = 'https://pokeapi.co/api/v2/pokemon/'
  
     DEVELOPMENT = False
     TESTING = False
