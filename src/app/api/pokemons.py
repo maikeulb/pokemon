@@ -15,4 +15,13 @@ def get_pokemons():
 def get_pokemon(id):
     url = 'https://pokeapi.co/api/v2/pokemon/' + id
     data = requests.get(url).json()
-    return jsonify(data), 200
+
+    pokemon = {
+        'id': data['id'],
+        'name': data['name'],
+        'height': data['weight'],
+        'weight': data['weight'],
+        'abilities': [ability['ability']['name'] for ability in data['abilities']]
+    }
+
+    return jsonify(pokemon), 200
