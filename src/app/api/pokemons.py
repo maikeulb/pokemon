@@ -2,7 +2,9 @@ import sys
 from flask import jsonify, current_app, request
 from app.api import api
 import requests
+import requests_cache
 
+requests_cache.install_cache('poke_cache', backend='sqlite', expire_after=180)
 
 @api.route('/pokemons', defaults={'limit': None, 'offset': None})
 def get_pokemons(limit, offset):
