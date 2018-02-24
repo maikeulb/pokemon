@@ -4,7 +4,7 @@ from app.api.errors import bad_request
 from sqlalchemy import func
 
 
-@api.route('/')
+@api.route('/pokemons')
 def get_pokemons()
 
 	url = 'https://pokeapi.co/api/v2/pokemon/'
@@ -13,7 +13,7 @@ def get_pokemons()
     return jsonify(data), 200
 
 
-@api.route('/<int:id>', methods=['GET'])
+@api.route('/pokemons/<int:id>', methods=['GET'])
 def get_pokemon(id):
 	url = 'https://pokeapi.co/api/v2/pokemon/' + id
 
