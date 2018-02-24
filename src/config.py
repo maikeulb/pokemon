@@ -3,7 +3,6 @@ import os
 class Config(object):
 
     API_URL  = 'https://pokeapi.co/api/v2/pokemon/'
-    CACHE_TYPE = 'simple'  # Can be "memcached", "redis", etc.
  
     DEVELOPMENT = False
     TESTING = False
