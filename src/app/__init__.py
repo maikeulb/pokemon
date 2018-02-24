@@ -3,7 +3,6 @@ import os
 from flask import (
     Flask,
     request)
-from app import models
 from app.api import api as api_bp
 
 Config = eval(os.environ['FLASK_APP_CONFIG'])
