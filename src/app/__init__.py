@@ -16,7 +16,6 @@ def create_app(config_class=Config):
     register_extensions(app)
     return app
 
-
 def register_blueprints(app):
     app.register_blueprint(api_bp, url_prefix='/api')
     return None

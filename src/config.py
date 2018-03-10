@@ -3,11 +3,11 @@ import os
 class Config(object):
 
     API_URL  = 'https://pokeapi.co/api/v2/pokemon/'
- 
+
     DEVELOPMENT = False
     TESTING = False
     PRODUCTION = False
-    DEBUG = False 
+    DEBUG = False
     TESTING = False
 
 class DevelopmentConfig(Config):
@@ -22,6 +22,3 @@ class ProductionConfig(Config):
 class TestingConfig(Config):
     DEBUG = True
     TESTING = True
-    BCRYPT_LOG_ROUNDS = 4  
-    CSRF_ENABLED = False
-    WTF_CSRF_ENABLED = False  
