@@ -1,0 +1,19 @@
+Simple API wrapper that consumes pokeapi and caches the results with redis and
+times the response time. Powered by Flask + Redis with minimum dependencies
+(not using Flask-Cache). The two endpoints are api/pokemons and
+api/pokemons/<int:id>.
+
+Quickstart
+First, make sure you have a local instance of Redis (Redis.py directly) and
+configure config.py so that it points to your instance, then set FLASK_APP to
+pokemon.py.
+
+$ pip install -r requirements.txt
+$ flask run
+$ localhost:5000/api/pokemons
+
+----
+Alternatively:
+$ docker-compose build
+$ docker-compose up
+$ localhost:8000/api/pokemons
