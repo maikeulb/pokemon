@@ -1,11 +1,6 @@
 # Everything the developer needs in addition to the production requirements
 -r prod.txt
 
-# Testing
-pytest==3.3.1
-WebTest==2.0.29
-factory-boy==2.9.2
-
 # Lint and code style
 flake8==3.5.0
 flake8-blind-except==0.1.1
