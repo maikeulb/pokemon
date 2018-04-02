@@ -32,8 +32,10 @@ def get_pokemons(limit, offset):
         url = url + '?limit=' + limit + '&offset=' + offset
 
     cache_key = '{}_{}'.format(limit, offset)
+    print('cache key - {}'.format(cache_key))
 
     serialized_pokemons = redis.get(cache_key)
+    # serialized_pokemons = redis.get(cache_key, ex=10000)
     if not serialized_pokemons:
         data = requests.get(url).json()
         pokemons = {
@@ -43,13 +45,14 @@ def get_pokemons(limit, offset):
         serialized_pokemons = json.dumps(pokemons)
         redis.set(cache_key, serialized_pokemons)
         t = request.values.get('t', 0)
-        print('Time without cache {} ms'.format(
+        print('retrieved pokemons from remote api in {} ms'.format(
             g.request_time()), sys.stdout)
         return jsonify(pokemons), 200
 
     deserialized_pokemons = json.loads(serialized_pokemons.decode('utf-8'))
     t = request.values.get('t', 0)
-    print('Time with cache {} ms'.format(g.request_time()), sys.stdout)
+    print('retrieved pokemons from cache in {} ms'.format(
+        g.request_time()), sys.stdout)
     return jsonify(deserialized_pokemons), 200
 
 
@@ -71,11 +74,12 @@ def get_pokemon(id):
         serialized_pokemon = json.dumps(pokemon)
         redis.set(cache_key, serialized_pokemon)
         t = request.values.get('t', 0)
-        print('Time without cache {} ms'.format(
+        print('retrieved pokemon from cache in {} ms'.format(
             g.request_time()), sys.stdout)
         return jsonify(pokemon), 200
 
     deserialized_pokemon = json.loads(serialized_pokemon.decode('utf-8'))
     t = request.values.get('t', 0)
-    print('Time with cache {} ms'.format(g.request_time()), sys.stdout)
+    print('retrieved pokemon from cache in {} ms'.format(
+        g.request_time()), sys.stdout)
     return jsonify(deserialized_pokemon), 200
