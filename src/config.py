@@ -1,9 +1,5 @@
 import os
 
-# dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
-# basedir = os.path.abspath(os.path.dirname(__file__))
-# load_dotenv(dotenv_path)
-
 
 class Config(object):
 
@@ -25,7 +21,6 @@ class DevelopmentConfig(Config):
 
 
 class ProductionConfig(Config):
-    DATABASE_URI = ''
     PRODUCTION = True
 
 

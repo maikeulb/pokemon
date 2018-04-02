@@ -1,11 +1,10 @@
 import os
 import time
 import sys
+import requests
+import json
 from flask import jsonify, current_app, request, g
 from app.api import api
-import requests
-import time
-import json
 from app.extensions import redis
 
 
