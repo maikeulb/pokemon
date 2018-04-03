@@ -1,7 +1,7 @@
-# Landmarks
+# Pokemon
 
 API client that consumes pokemon data from pokeapi (pokemon API), caches it
-with Redis (using redis-py), and times the response time. 
+with Redis (using redis-py), and measures the response time. 
 
 Technology
 ----------
@@ -13,7 +13,7 @@ Endpoints
 
 | Method     | URI                                  | Action                                      |
 |------------|--------------------------------------|---------------------------------------------|
-| `GET`      | `/api/pokemons`                      | `Retrieve all pokemon`<sub>1</sub>          |
+| `GET`      | `/api/pokemons`                      | `Retrieve all pokemon`<sup>1</sup>          |
 | `GET`      | `/api/pokemons/{id}`                 | `Retrieve pokemon`                          |
 
 1. Optional query parameters: limit, offset
@@ -40,9 +40,11 @@ Sample Usage
         }, 
 ....
 ```
-logged to console after first request: `retrieved pokemons from remote api in 0.62505s ms`
+logged to console after first request:  
+`retrieved pokemons from remote api in 0.62505s ms`
 
-logged to console after second request: `retrieved pokemons from cache in 0.00073s ms`
+logged to console after second request:  
+`retrieved pokemons from cache in 0.00073s ms`
 
 Run
 ---
@@ -53,14 +55,12 @@ docker-compose up
 Go to http://localhost:5000 and visit one of the above endpoints
 ```
 
-Otherwise, go to `config.py` and point the Redis variables so
-that they point to your server URI's, set the `FLASK_APP` env variable to
-pokemon.py, and pip install the requirements. 
+Alternatively, open `config.py` and point the Redis URI to your server,
+set the `FLASK_APP` env variable to pokemon.py, and pip install the
+dependencies (e.g. `pip install -r requirements.txt`). 
 
-After all that has been taken care of,
+`cd` into `./src` (if you are not already) and run the following:
 ```
-flask db upgrade
-flask seed-db
 flask run
 Go to http://localhost:5000 and visit one of the above endpoints
 ```
