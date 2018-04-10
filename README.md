@@ -48,7 +48,7 @@ logged to console after second request:
 
 Run
 ---
-If you have docker installed,
+With docker:
 ```
 docker-compose build
 docker-compose up
@@ -57,9 +57,12 @@ Go to http://localhost:5000 and visit one of the above endpoints
 
 Alternatively, open `config.py` and point the Redis URI to your server,
 set the `FLASK_APP` env variable to pokemon.py, and pip install the
-dependencies (e.g. `pip install -r requirements.txt`). 
+dependencies (e.g. `pip install -r requirements.txt`). Be sure to install the
+python dependencies using `requirements.txt` located in `./src/`, not
+`./src/requirements/` (I'm working on pruning the dev/prod/test dependencies).
 
-`cd` into `./src` (if you are not already) and run the following:
+
+`cd` into `./pokemon` (if you are not already); then run:
 ```
 flask run
 Go to http://localhost:5000 and visit one of the above endpoints
